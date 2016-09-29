@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int-zk="http://www.springframework.org/schema/integration/zookeeper"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/integration/zookeeper http://www.springframework.org/schema/integration/zookeeper/spring-integration-zookeeper.xsd">
+
+    <bean id="client" class="org.springframework.integration.zookeeper.config.CuratorFrameworkFactoryBean">
+        <constructor-arg value="localhost:2181"/>
+    </bean>
+
+    <int-zk:leader-listener client="client" path="/capi" role="integrator" auto-startup="true"/>
+
+</beans>
